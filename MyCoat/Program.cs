@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Paint
+namespace MyCoat
 {
     internal class Program
     {
@@ -23,14 +23,13 @@ namespace Paint
 
 
             keyinfo = Console.ReadKey();
-            Console.SetWindowSize(150, 50);
 
             while (keyinfo.Key != ConsoleKey.Escape)
             {
                 keyinfo = Console.ReadKey();
 
                 // Move corsore
-                if (keyinfo.Key == ConsoleKey.RightArrow && x < 100)
+                if (keyinfo.Key == ConsoleKey.RightArrow && x < 118)
                     x++;
 
                 if (keyinfo.Key == ConsoleKey.LeftArrow && x > 0)
