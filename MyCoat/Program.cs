@@ -8,24 +8,27 @@ namespace MyCoat
         {
             gameStart();
         }
-        //Decoration Department, Cheat Team, Boundaries, Beep Team
+        //-Decoration Department, ~Cheat Team, _Boundaries, +Beep Team
         static void game()
         {
             ConsoleKeyInfo keyinfo;
 
-            //Decoration Departmetn
+            //-Decoration Departmetn
             string s = "♥️";
-            bool penDown = true, Menu = true;
+            bool penDown = true;
             int x = 1, y = 1;
 
-            //Cheat Team
+            //Some adjustments
+            bool Menu = true;
+
+            //~Cheat Team
             int Cheat = NewMethod1();
 
-            //Beep Team
+            //+Beep Team
             string Music = "\a";
             bool sound = true;
 
-            //Decoration Department
+            //-Decoration Department
             do
             {
                 if (Menu)
@@ -44,7 +47,7 @@ namespace MyCoat
 
                     Console.SetCursorPosition(x, y);
                 }
-
+                //Some adjustments
                 Menu = false;
 
                 keyinfo = Console.ReadKey();
@@ -53,7 +56,7 @@ namespace MyCoat
                 if (keyinfo.Key == ConsoleKey.C)
                     Menu = true;
 
-                //Boundaries Team
+                //_Boundaries Team
                 // Move corsore
                 if (keyinfo.Key == ConsoleKey.RightArrow && x < 118)
                     x++;
@@ -76,7 +79,7 @@ namespace MyCoat
                 if (keyinfo.Key == ConsoleKey.R) Console.ForegroundColor = ConsoleColor.Red;
                 if (keyinfo.Key == ConsoleKey.W) Console.ForegroundColor = ConsoleColor.White;
 
-                //Decoration Department
+                //-Decoration Department
                 if (keyinfo.Key == ConsoleKey.W)
                 {
                     if (s == "♥️")
@@ -87,14 +90,14 @@ namespace MyCoat
                         s = "♥️";
                 }
 
-                //BeepTeam
+                //+Beep Team
                 if (keyinfo.Key == ConsoleKey.M)                
                     sound = !sound;
 
                 if (sound)
                     Console.WriteLine(Music);
 
-                //Cheat Team
+                //~Cheat Team
                 if (keyinfo.Key == ConsoleKey.P)
                 {
                     Cheat = 1;
@@ -128,7 +131,7 @@ namespace MyCoat
 
             } while (keyinfo.Key != ConsoleKey.Escape);
         }
-        //BullsEye Game
+        //*BullsEye Game
         static void BullsEye()
         {
             ConsoleKeyInfo keyinfo;
@@ -200,7 +203,7 @@ namespace MyCoat
                 if (penDown) Console.Write(s);
             }
         }
-        //Decoration Department
+        //-Decoration Department
         static void trial()
         {
             //למעלה
@@ -236,7 +239,7 @@ namespace MyCoat
                 x++;
             }
         }
-        //Decoration Department
+        //-Decoration Department
         static void corners()
         {
             //שמאל למעלה
@@ -253,7 +256,7 @@ namespace MyCoat
             Console.Write("╗");
             Console.SetCursorPosition(2, 1);
         }
-        //Decoration Department
+        //-Decoration Department
         static void gameStart()
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -299,12 +302,12 @@ namespace MyCoat
                 BullsEye();
 
         }
-        //Cheat Team
+        //~Cheat Team
         private static int NewMethod1()
         {
             return NewMethod();
         }
-        //Cheat Team
+        //~Cheat Team
         private static int NewMethod()
         {
             return 0;
