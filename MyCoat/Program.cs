@@ -65,8 +65,6 @@ namespace MyCoat
                     Console.SetCursorPosition(1, 1);
                 }
 
-
-
                 if (keyinfo.Key == ConsoleKey.P)
                 {
                     if (s == '*')
