@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyCoat
 {
@@ -11,31 +7,43 @@ namespace MyCoat
         static void Main(string[] args)
         {
             gameStart();
-            trial();
-            corners();
             game();
         }
 
         static void game()
         {
             ConsoleKeyInfo keyinfo;
-            char s = '♥️';
-            bool penDown = true;
-            int x = 0, y = 0;
+            string s = "♥️";
+            bool penDown = true, Menu = true;
+            int x = 1, y = 1;
 
-            // MENU //
-            Console.SetCursorPosition(2, 33);
-            Console.WriteLine("C- Clear Screen, P- Change Pen, R (red) and W (white)- Change Color.");
-            Console.SetCursorPosition(2, 34);
-            Console.WriteLine("U- Pen Up, D- Pen Down, Escape - Exit");
-            Console.SetCursorPosition(1, 1);
-
-            keyinfo = Console.ReadKey();
-
-            while (keyinfo.Key != ConsoleKey.Escape)
+            do
             {
+                if (Menu)
+                {
+                    // MENU //
+                    Console.Clear();
+
+                    trial();
+                    corners();
+
+                    Console.SetCursorPosition(2, 27);
+                    Console.WriteLine("C- Clear Screen, P- Change Pen, R (red) and W (white)- Change Color.");
+                    Console.SetCursorPosition(2, 28);
+                    Console.WriteLine("U- Pen Up, D- Pen Down, Escape - Exit");
+                    Console.SetCursorPosition(1, 1);
+
+                    Console.SetCursorPosition(x, y);
+                }
+
+                Menu = false;
+
+
                 keyinfo = Console.ReadKey();
-                Console.SetCursorPosition(1, 1);
+                Console.SetCursorPosition(x, y);
+
+                if (keyinfo.Key == ConsoleKey.C)
+                    Menu = true;
 
                 // Move corsore
                 if (keyinfo.Key == ConsoleKey.RightArrow) x++;
@@ -49,27 +57,18 @@ namespace MyCoat
 
                 if (keyinfo.Key == ConsoleKey.U) penDown = false;
                 if (keyinfo.Key == ConsoleKey.D) penDown = true;
-                if (keyinfo.Key == ConsoleKey.R) Console.BackgroundColor = ConsoleColor.Red;
-                if (keyinfo.Key == ConsoleKey.W) Console.BackgroundColor = ConsoleColor.White;
+                if (keyinfo.Key == ConsoleKey.R) Console.ForegroundColor = ConsoleColor.Red;
+                if (keyinfo.Key == ConsoleKey.W) Console.ForegroundColor = ConsoleColor.White;
 
-                if (keyinfo.Key == ConsoleKey.C)
-                {
-                    Console.Clear();
-                    // MENU //
-                    Console.SetCursorPosition(1, 20);
-                    Console.WriteLine("____________");
-                    Console.WriteLine("C- Clear Screen, P- Change Pen, R (red) and W (white)- Change Color, U- Pen Up, D- Pen Down, Escape - Exit");
-                    Console.SetCursorPosition(1, 1);
-                }
 
                 if (keyinfo.Key == ConsoleKey.P)
                 {
-                    if (s == '♥️')
-                        s = '▓';
-                    else if (s == '▓')
-                        s = '■';
+                    if (s == "♥️")
+                        s = "▓";
+                    else if (s == "▓")
+                        s = "■";
                     else
-                        s = '♥️';
+                        s = "♥️";
                 }
 
                 // Set Cursoe Position and pain if pen is down.
@@ -77,14 +76,13 @@ namespace MyCoat
                 Console.SetCursorPosition(x, y);
                 if (penDown) Console.Write(s);
 
-            }
+            } while (keyinfo.Key != ConsoleKey.Escape);
         }
         static void trial()
         {
-
             //למעלה
             int x = 1, y = 0;
-            for (int i = 0; i < 90; i++)
+            for (int i = 0; i < 118; i++)
             {
                 Console.SetCursorPosition(x, y);
                 Console.Write('═');
@@ -92,22 +90,23 @@ namespace MyCoat
             }
             //שמאל
             x = 0; y = 1;
-            for (int b = 0; b < 35; b++)
+            for (int b = 0; b < 24; b++)
             {
+                Console.SetCursorPosition(x, y);
                 Console.WriteLine('║');
                 y++;
             }
             //ימין
-            x = 91; y = 1;
-            for (int b = 0; b < 35; b++)
+            x = 119; y = 1;
+            for (int b = 0; b < 24; b++)
             {
                 Console.SetCursorPosition(x, y);
                 Console.WriteLine('║');
                 y++;
             }
             //למטה
-            x = 1; y = 35;
-            for (int c = 0; c < 90; c++)
+            x = 1; y = 25;
+            for (int c = 0; c < 118; c++)
             {
                 Console.SetCursorPosition(x, y);
                 Console.Write('═');
@@ -120,24 +119,20 @@ namespace MyCoat
             Console.SetCursorPosition(0, 0);
             Console.Write("╔");
             //שמאל למטה
-            Console.SetCursorPosition(0, 35);
+            Console.SetCursorPosition(0, 25);
             Console.Write("╚");
             //ימין למטה
-            Console.SetCursorPosition(91, 35);
+            Console.SetCursorPosition(119, 25);
             Console.Write("╝");
             //ימין למעלה
-            Console.SetCursorPosition(91, 0);
+            Console.SetCursorPosition(119, 0);
             Console.Write("╗");
-            Console.SetCursorPosition(0, 30);
-
+            Console.SetCursorPosition(2, 1);
         }
         static void gameStart()
         {
-            Console.WindowHeight = 36;
-            Console.WindowWidth = 92;
-
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.SetCursorPosition(1, 12);
+            Console.SetCursorPosition(1, 4);
             Console.WriteLine(@"
  _____ _             _    ______     _       _                                
 /  ___| |           | |   | ___ \   (_)     | |                               
@@ -154,21 +149,19 @@ namespace MyCoat
                                                                               
                                                                               
                                                                               
-                                                                              
-                                                          
 ");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.SetCursorPosition(2, 30);
+            Console.SetCursorPosition(2, 20);
             Console.WriteLine("Press ENTER to continue ");
 
             ConsoleKeyInfo keyinfo;
-            keyinfo = Console.ReadKey();
+            do
+            {
+                keyinfo = Console.ReadKey();
 
-            if (keyinfo.Key == ConsoleKey.Enter) Console.Clear();
+            } while (keyinfo.Key != ConsoleKey.Enter);
 
-
+            Console.Clear();
         }
-
-
     }
 }
