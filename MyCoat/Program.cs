@@ -9,14 +9,17 @@ namespace MyCoat
             gameStart();
             game();
         }
-
+        //Decoration Department, Cheat Team, 
         static void game()
         {
+            //Decoration Departmetn
             ConsoleKeyInfo keyinfo;
             string s = "♥️";
             bool penDown = true, Menu = true;
             int x = 1, y = 1;
-
+            //Cheat Team
+            int Cheat = NewMethod1();
+            //Decoration Department
             do
             {
                 if (Menu)
@@ -28,7 +31,7 @@ namespace MyCoat
                     corners();
 
                     Console.SetCursorPosition(2, 27);
-                    Console.WriteLine("C- Clear Screen, P- Change Pen, R (red) and W (white)- Change Color.");
+                    Console.WriteLine("C- Clear Screen, W- Change Pen, R (red) and W (white)- Change Color.");
                     Console.SetCursorPosition(2, 28);
                     Console.WriteLine("U- Pen Up, D- Pen Down, Escape - Exit");
                     Console.SetCursorPosition(1, 1);
@@ -37,7 +40,6 @@ namespace MyCoat
                 }
 
                 Menu = false;
-
 
                 keyinfo = Console.ReadKey();
                 Console.SetCursorPosition(x, y);
@@ -60,8 +62,8 @@ namespace MyCoat
                 if (keyinfo.Key == ConsoleKey.R) Console.ForegroundColor = ConsoleColor.Red;
                 if (keyinfo.Key == ConsoleKey.W) Console.ForegroundColor = ConsoleColor.White;
 
-
-                if (keyinfo.Key == ConsoleKey.P)
+                //Decoration Department
+                if (keyinfo.Key == ConsoleKey.W)
                 {
                     if (s == "♥️")
                         s = "▓";
@@ -71,6 +73,33 @@ namespace MyCoat
                         s = "♥️";
                 }
 
+                //Cheat Team
+                if (keyinfo.Key == ConsoleKey.P)
+                {
+                    Cheat = 1;
+                }
+                if (keyinfo.Key == ConsoleKey.I && Cheat == 1)
+                {
+                    Cheat = 2;
+                }
+                if (keyinfo.Key == ConsoleKey.Z && Cheat == 2)
+                {
+                    Cheat = 3;
+                }
+                if (keyinfo.Key == ConsoleKey.Z && Cheat == 3)
+                {
+                    Cheat = 4;
+                }
+                if (keyinfo.Key == ConsoleKey.A && Cheat == 4)
+                {
+                    Console.SetCursorPosition(45, 10);
+                    Console.WriteLine("you broke the system");
+                }
+                if (keyinfo.Key != ConsoleKey.P && keyinfo.Key != ConsoleKey.I && keyinfo.Key != ConsoleKey.Z && keyinfo.Key != ConsoleKey.A)
+                {
+                    Cheat = 0;
+                }
+
                 // Set Cursoe Position and pain if pen is down.
 
                 Console.SetCursorPosition(x, y);
@@ -78,6 +107,7 @@ namespace MyCoat
 
             } while (keyinfo.Key != ConsoleKey.Escape);
         }
+        //Decoration Department
         static void trial()
         {
             //למעלה
@@ -113,6 +143,7 @@ namespace MyCoat
                 x++;
             }
         }
+        //Decoration Department
         static void corners()
         {
             //שמאל למעלה
@@ -129,6 +160,7 @@ namespace MyCoat
             Console.Write("╗");
             Console.SetCursorPosition(2, 1);
         }
+        //Decoration Department
         static void gameStart()
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -162,6 +194,16 @@ namespace MyCoat
             } while (keyinfo.Key != ConsoleKey.Enter);
 
             Console.Clear();
+        }
+        //Cheat Team
+        private static int NewMethod1()
+        {
+            return NewMethod();
+        }
+        //Cheat Team
+        private static int NewMethod()
+        {
+            return 0;
         }
     }
 }
