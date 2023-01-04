@@ -8,16 +8,23 @@ namespace MyCoat
         {
             gameStart();
         }
-        //Decoration Department, Cheat Team, 
+        //Decoration Department, Cheat Team, Boundaries, Beep Team
         static void game()
         {
-            //Decoration Departmetn
             ConsoleKeyInfo keyinfo;
+
+            //Decoration Departmetn
             string s = "♥️";
             bool penDown = true, Menu = true;
             int x = 1, y = 1;
+
             //Cheat Team
             int Cheat = NewMethod1();
+
+            //Beep Team
+            string Music = "\a";
+            bool sound = true;
+
             //Decoration Department
             do
             {
@@ -79,6 +86,13 @@ namespace MyCoat
                     else
                         s = "♥️";
                 }
+
+                //BeepTeam
+                if (keyinfo.Key == ConsoleKey.M)                
+                    sound = !sound;
+
+                if (sound)
+                    Console.WriteLine(Music);
 
                 //Cheat Team
                 if (keyinfo.Key == ConsoleKey.P)
