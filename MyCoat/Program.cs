@@ -14,7 +14,7 @@ namespace Paint
             char s = '*';
             bool penDown = true;
             int x = 0, y = 0;
-            string Music;
+            string Music = "\a";
             bool sound = true;
 
             // MENU //
@@ -79,7 +79,7 @@ namespace Paint
                 }
 
                 if (sound)
-                    Console.Beep();
+                    Console.WriteLine(Music);
 
                 // Set Cursoe Position and pain if pen is down.
 
