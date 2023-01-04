@@ -46,11 +46,19 @@ namespace MyCoat
                 if (keyinfo.Key == ConsoleKey.C)
                     Menu = true;
 
+                //Boundaries Team
                 // Move corsore
-                if (keyinfo.Key == ConsoleKey.RightArrow) x++;
-                if (keyinfo.Key == ConsoleKey.LeftArrow) x--;
-                if (keyinfo.Key == ConsoleKey.DownArrow) y++;
-                if (keyinfo.Key == ConsoleKey.UpArrow) y--;
+                if (keyinfo.Key == ConsoleKey.RightArrow && x < 118)
+                    x++;
+
+                if (keyinfo.Key == ConsoleKey.LeftArrow && x > 0)
+                    x--;
+
+                if (keyinfo.Key == ConsoleKey.DownArrow && y < 19)
+                    y++;
+
+                if (keyinfo.Key == ConsoleKey.UpArrow && y > 0)
+                    y--;
 
                 //frame               
 
