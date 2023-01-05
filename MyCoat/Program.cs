@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 
 namespace MyCoat
 {
@@ -9,26 +10,31 @@ namespace MyCoat
             gameStart();
             game();
         }
-
         static void game()
         {
             ConsoleKeyInfo keyinfo;
-            string s = "♥️";
-            bool penDown = true, Menu = true;
+            string s = "♥️";//I've changed it to string because the heart dosent count as char
+            bool penDown = true;
+            bool Menu = true;//added a bool that will print the the whole window
             int x = 1, y = 1;
 
-            do
+            do//made it do loop because i wanted to print the screen at least once before we get into the loop
             {
                 if (Menu)
                 {
                     // MENU //
                     Console.Clear();
 
+                    /* I added the both of the funcitons here because if someone would've pressed c to clear all
+                       he would'nt be able to see the frame
+
+                     * and this way we dont have to print it twice
+                    */
                     trial();
                     corners();
 
                     Console.SetCursorPosition(2, 27);
-                    Console.WriteLine("C- Clear Screen, P- Change Pen, R (red) and W (white)- Change Color.");
+                    Console.WriteLine("C- Clear Screen, E- Change Pen, R (red) and W (white)- Change Color.");
                     Console.SetCursorPosition(2, 28);
                     Console.WriteLine("U- Pen Up, D- Pen Down, Escape - Exit");
                     Console.SetCursorPosition(1, 1);
@@ -43,7 +49,7 @@ namespace MyCoat
                 Console.SetCursorPosition(x, y);
 
                 if (keyinfo.Key == ConsoleKey.C)
-                    Menu = true;
+                    Menu = true;//"Activate" the bool if the user want to erase it all
 
                 // Move corsore
                 if (keyinfo.Key == ConsoleKey.RightArrow) x++;
@@ -61,7 +67,7 @@ namespace MyCoat
                 if (keyinfo.Key == ConsoleKey.W) Console.ForegroundColor = ConsoleColor.White;
 
 
-                if (keyinfo.Key == ConsoleKey.P)
+                if (keyinfo.Key == ConsoleKey.E)//we had some overlaps with the "PIZZA" commend the the Cheat team did so i had to chang it
                 {
                     if (s == "♥️")
                         s = "▓";
@@ -80,6 +86,8 @@ namespace MyCoat
         }
         static void trial()
         {
+            //the window size is x = 120 by y = 30 so I had to adjust it
+
             //למעלה
             int x = 1, y = 0;
             for (int i = 0; i < 118; i++)
@@ -115,6 +123,8 @@ namespace MyCoat
         }
         static void corners()
         {
+            //same thing here i had to adjust the corners because the window size is x = 120 by y = 30
+
             //שמאל למעלה
             Console.SetCursorPosition(0, 0);
             Console.Write("╔");
