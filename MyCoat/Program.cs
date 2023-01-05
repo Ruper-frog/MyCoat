@@ -14,7 +14,7 @@ namespace MyCoat
             ConsoleKeyInfo keyinfo;
 
             //-Decoration Departmetn
-            string s = "♥️ ";
+            string s = "♥️";
             bool penDown = true;
             int x = 1, y = 1;
 
