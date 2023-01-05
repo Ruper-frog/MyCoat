@@ -14,7 +14,7 @@ namespace MyCoat
             ConsoleKeyInfo keyinfo;
 
             //-Decoration Departmetn
-            string s = "♥️";
+            string s = "♥️ ";
             bool penDown = true;
             int x = 1, y = 1;
 
@@ -40,9 +40,9 @@ namespace MyCoat
                     corners();
 
                     Console.SetCursorPosition(2, 27);
-                    Console.WriteLine("C- Clear Screen, W- Change Pen, R (red) and W (white)- Change Color.");
+                    Console.WriteLine("C- Clear Screen, E- Change Pen, R (red) and W (white)- Change Color.");
                     Console.SetCursorPosition(2, 28);
-                    Console.WriteLine("U- Pen Up, D- Pen Down, Escape - Exit");
+                    Console.WriteLine("U- Pen Up, D- Pen Down, M- Music on/off, Escape - Exit");
                     Console.SetCursorPosition(1, 1);
 
                     Console.SetCursorPosition(x, y);
@@ -80,7 +80,7 @@ namespace MyCoat
                 if (keyinfo.Key == ConsoleKey.W) Console.ForegroundColor = ConsoleColor.White;
 
                 //-Decoration Department
-                if (keyinfo.Key == ConsoleKey.W)
+                if (keyinfo.Key == ConsoleKey.E)
                 {
                     if (s == "♥️")
                         s = "▓";
